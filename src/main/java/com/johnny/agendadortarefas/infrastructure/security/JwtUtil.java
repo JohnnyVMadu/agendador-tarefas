@@ -15,7 +15,7 @@ import java.util.Date;
 public class JwtUtil {
 
     private static final String SECRET_KEY =
-            "chaveUltraSeguraDoAgendadorDeTarefas9876543210ABCDEF";
+            "chaveSuperSecretaParaAssinaturaJWT123456789012345678901234567890";
     private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1h
 
     private SecretKey getSigningKey() {
