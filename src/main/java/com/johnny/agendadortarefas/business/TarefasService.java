@@ -102,8 +102,8 @@ public class TarefasService {
     // CONVERTER
     // ===========================================================
     private TarefasDTO toDTO(TarefasEntity entity) {
-        TarefasDTO dto = new TarefasDTO();
 
+        TarefasDTO dto = new TarefasDTO();
         dto.setId(entity.getId());
         dto.setNomeTarefa(entity.getNomeTarefa());
         dto.setDescricao(entity.getDescricao());
@@ -116,3 +116,4 @@ public class TarefasService {
         return dto;
     }
 }
+
