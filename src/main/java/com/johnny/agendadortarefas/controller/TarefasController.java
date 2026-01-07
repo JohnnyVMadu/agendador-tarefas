@@ -18,14 +18,22 @@ public class TarefasController {
 
     private final TarefasService tarefasService;
 
+    // ===========================================================
+    // CREATE
+    // ===========================================================
     @PostMapping
     public ResponseEntity<TarefasDTO> gravarTarefas(
             @RequestHeader("Authorization") String token,
             @RequestBody TarefasDTO dto) {
 
-        return ResponseEntity.ok(tarefasService.gravarTarefa(token, dto));
+        return ResponseEntity.ok(
+                tarefasService.gravarTarefa(token, dto)
+        );
     }
 
+    // ===========================================================
+    // FIND BY PERIOD
+    // ===========================================================
     @GetMapping("/eventos")
     public ResponseEntity<List<TarefasDTO>> buscaListaDeTarefasPorPeriodo(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dataInicial,
@@ -36,6 +44,9 @@ public class TarefasController {
         );
     }
 
+    // ===========================================================
+    // FIND BY EMAIL
+    // ===========================================================
     @GetMapping
     public ResponseEntity<List<TarefasDTO>> buscaTarefasPorEmail(
             @RequestHeader("Authorization") String token) {
@@ -48,12 +59,19 @@ public class TarefasController {
         );
     }
 
+    // ===========================================================
+    // DELETE
+    // ===========================================================
     @DeleteMapping
     public ResponseEntity<Void> deletaTarefaPorID(@RequestParam("id") String id) {
+
         tarefasService.deletaTarefaPorId(id);
         return ResponseEntity.ok().build();
     }
 
+    // ===========================================================
+    // UPDATE STATUS
+    // ===========================================================
     @PatchMapping
     public ResponseEntity<TarefasDTO> alteraStatusNotificacao(
             @RequestParam("status") StatusNotificacaoEnum status,
@@ -64,6 +82,9 @@ public class TarefasController {
         );
     }
 
+    // ===========================================================
+    // UPDATE TASK
+    // ===========================================================
     @PutMapping
     public ResponseEntity<TarefasDTO> updateTarefas(
             @RequestBody TarefasDTO dto,
